@@ -1,11 +1,14 @@
-<form (ngSubmit)="onMyFormSubmit()"> 
-<input type="text" [formControl]="userName" required="">
+-------------------------------------------------------------------------------------------------- APP.COMPONENT.HTML
+<form (ngSubmit)="onMyFormSubmit()">
+ 
 
+<input type="text" [formControl]="userName" required="">
 <input type="submit"> 
+
 </form>
 
 
-----------------ts 
+----------------------------------------------------------------------------------------------------------------- ts 
 
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -28,29 +31,8 @@ export class AppComponent {
   
   ngOnInit(): void {
   }
-
-
-  book=new Book();
   
-  addBook()
-  {
-
-this.bookService.addBook(this.book).subscribe(
-
-  data=>{
-
-    alert('book added')
-  },
-  error=>{
-    console.log(error)
-  }
-)
-
-  }
-
-
-
-  userName=new FormControl();
+  userName = new FormControl();
 
   onMyFormSubmit()
   {
@@ -60,9 +42,9 @@ this.bookService.addBook(this.book).subscribe(
   
     console.log(this.userName)
 
-    if(this.userName.errors!=null)
+    if(this.userName.errors!=null)                      //**** this means if there is no errors in the username
     {
-        if(this.userName.errors.required)
+        if(this.userName.errors['required'])
         {
           alert('name cannot be left blank')
         }
