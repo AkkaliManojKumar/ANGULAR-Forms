@@ -1,0 +1,90 @@
+-------------------------------------------------------------------------------------------------- app.component.html
+
+
+
+<form (ngSubmit)="onMyFormSubmit()"> 
+
+<input type="text" [formControl]="userName">
+<input type="submit">
+
+</form>
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------- ts 
+
+
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Article } from 'src/artice.model';
+import { Book } from 'src/Book.model';
+import { BooksService } from './books.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'httpdemo2';
+
+
+  constructor(){
+  
+this.myFormValidation();                //****  IN TS FILE FIRST CONSTRUCTOR LOAD FIRST THEN ngOnInit LOADS
+
+  }
+ 
+  ngOnInit(): void {
+  }
+
+
+  myFormValidation()
+  {
+//    this.userName.setValidators([Validators.required])
+  
+this.userName.setValidators([Validators.required,Validators.minLength(3)])   //*** LIKE THIS WE CAN GIVE ARRAY OF VALIDATORS
+                                                                                  //setvalidators is the method used to set validations
+
+}
+
+  userName=new FormControl();
+
+  onMyFormSubmit()
+  {
+   
+    console.log('valid '+this.userName.valid);
+    console.log('touched '+this.userName.touched);
+  
+    console.log(this.userName)   //***only user name means it has many properties in it it will show all value,dirty,errors ,prie
+
+    if(this.userName.errors!=null)
+    {
+        if(this.userName.errors.required)
+        {
+          alert('name cannot be left blank')
+        }
+
+        
+        if(this.userName.errors.minlength)
+        {
+         
+         console.log(this.userName.errors.minlength.actualLength);
+         console.log(this.userName.errors.minlength.requiredLength);
+          alert('user name should be of 3 or more chars')
+        }
+       //if(this.userName.errors[required])
+        
+    }
+
+  }
+
+
+
+}
