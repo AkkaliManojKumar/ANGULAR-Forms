@@ -1,3 +1,4 @@
+----------------------------------------------------------------------------------------------------------------- app.componnet.html
 <form (ngSubmit)="onMyFormSubmit()"> 
 <input type="text" [formControl]="userName">
 
@@ -6,7 +7,7 @@
 
 
 
---------------------------ts
+---------------------------------------------------------------------------------------------------------------------------  ts
 
 
 import { Component } from '@angular/core';
@@ -29,11 +30,11 @@ export class AppComponent {
   onMyFormSubmit()
   {
    
-    console.log('value '+this.userName.value);
-    console.log('valid '+this.userName.valid);
-    console.log('touched '+this.userName.touched);
-    console.log('dirty '+this.userName.dirty);
-    console.log('pristine '+this.userName.pristine);
+    console.log('value '+this.userName.value);     //****************** value gives value in it 
+    console.log('valid '+this.userName.valid);    //*******8 valid checks weather it is valid or not 
+    console.log('touched '+this.userName.touched);  //************ if the form is touched the  it is it will give if not it wont display
+    console.log('dirty '+this.userName.dirty);      //*** anything is written then this gives true
+    console.log('pristine '+this.userName.pristine);  //**** form is touched and not filled then it gives true
 
   }
 
