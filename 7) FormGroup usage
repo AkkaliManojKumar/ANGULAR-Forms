@@ -1,0 +1,93 @@
+----------------------------------------------------------------------------------------------------- app.comp.ts --------------------------------------
+
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Article } from 'src/artice.model';
+import { Book } from 'src/Book.model';
+import { BooksService } from './books.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'httpdemo2';
+
+
+  constructor(){          //** consructor calles first in the ts file is loaded
+  
+this.myFormValidation();
+
+  }
+  
+  ngOnInit(): void {
+  }
+
+
+  myFormValidation()
+  {
+//    this.userName.setValidators([Validators.required])
+  
+//this.userName.setValidators([Validators.required,Validators.minLength(3)])
+  
+
+}
+
+//------- to create different vars it will take so much code -----------------
+  //userName=new FormControl();
+  //email=new FormControl();
+  
+//------------------------------------- [OR] --------------------------------
+
+
+  addForm=new FormGroup({ uname:new FormControl(),email:new FormControl(),})   //***  FormGroup takes array of elementsin to it
+  
+
+  onMyFormSubmit()
+  {
+   
+    //console.log(this.userName.value);
+    //console.log(this.email.value);
+    
+ //  ---------------  [OR] ---------------------
+ 
+    console.log(this.addForm.value);    //*** directly we can call allvars inside form group
+
+    if(this.addForm.valid)                   //******* this.addForm.valid = true
+        alert('form is valid')
+    else
+       alert('form is invalid')
+  }
+
+
+
+}
+
+
+
+------------------------------------------------------------------------------------------------------  app.component.html 
+
+<!-- 
+
+// COMMENTED PART
+
+<form (ngSubmit)="onMyFormSubmit()"> 
+<input type="text" [formControl]="userName">
+
+<input type="text" [formControl]="email">
+
+<input type="submit"> 
+</form>
+
+-->
+
+
+
+<form [formGroup]="addForm" (ngSubmit)="onMyFormSubmit()"> 
+    <input type="text" formControlName="uname" required>
+    
+    <input type="text" formControlName="email" required>
+    
+    <input type="submit"> 
+    </form>
