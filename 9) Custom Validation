@@ -143,12 +143,14 @@ this.bookService.addBook(this.book).subscribe(
 }
 
 ----------------------------------------------------------------------------------------------------------  myvalidator.validator.ts  -----------------------------
+//***** myvalidator.validator IS THE CUSTOM VALIDATOR WE CREATED
 
 
+ 
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-export function myValidator():ValidatorFn
-{
+export function myValidator():ValidatorFn         //***** ValidatorFn ---> predefined type for the function myValidator()
+{                                                       //***** we cannot write the other type for that custom validator
 
     return (ctrl:AbstractControl):ValidationErrors|null=>{
 
