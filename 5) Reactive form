@@ -1,3 +1,5 @@
+-------------------------------------------------------------------------------------------- app.component.ts -----------------------------------
+
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Article } from 'src/artice.model';
@@ -39,7 +41,7 @@ this.bookService.addBook(this.book).subscribe(
 
   }
 
-
+//-------------------------- forms started ------
 
   userName=new FormControl();
 
@@ -73,7 +75,7 @@ this.bookService.addBook(this.book).subscribe(
 
 }
 
--------------------------------------ts 
+-------------------------------------------------------------------------------------------------------- app.comp.HTML -------------------------------- 
 
 
 <!-- 
@@ -122,7 +124,7 @@ this.bookService.addBook(this.book).subscribe(
 <br>
 <button (click)="addBook()"> add book </button> -->
 
-
+//------------------------------ form started ----------------------------------
 
 <form (ngSubmit)="onMyFormSubmit()"> 
 <input type="text" [formControl]="userName" required="" minlength="3">
