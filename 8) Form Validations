@@ -54,7 +54,7 @@ export class AppComponent {
   title = 'httpdemo2';
 
 
-  constructor(){
+  constructor(bookservice:serviceclassname){
   
 this.myFormValidation();  //*** SELF CALLING METHOD
   }
@@ -78,27 +78,31 @@ this.myFormValidation();  //*** SELF CALLING METHOD
 
   myFormValidation()
   {
+  
+  this.addForm.controls['title'].setValidators([Validators.minLength(5)])  //+++++++++++++++++++ ||||| +++++ (((FOR FormGroup we write validators like this)))
+  
+  
 //    this.userName.setValidators([Validators.required])   //*** REQUIRED FEILD ane validater ni set chestunnam ikkada
   
 //this.userName.setValidators([Validators.required,Validators.minLength(3)])  //*** REQUIRED FEILD & min length ane validater  set chestunnam ikkada
   
-this.addForm.controls['title'].setValidators([Validators.minLength(5)])
+
 
 }
 
 
 
-  book=new Book();
-  
+  book=new Book();      //**** new memoery is created for the  book 
+                        //**** book is of type Book so it can have id,title,isbn nad all
   addBook()
   {
 
     if(this.addForm.valid)
     {
 
-this.bookService.addBook(this.book).subscribe(
+        this.bookService.addBook(this.book).subscribe(
 
-  data=>{
+         data=>{
 
     alert('book added')
   },
