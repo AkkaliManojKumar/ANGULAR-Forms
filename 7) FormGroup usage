@@ -82,7 +82,7 @@ this.myFormValidation();
 
 -->
 
-
+------------------------- form group strtd from here ------------------------------------
 
 <form [formGroup]="addForm" (ngSubmit)="onMyFormSubmit()"> 
     <input type="text" formControlName="uname" required>
