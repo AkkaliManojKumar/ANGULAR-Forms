@@ -1,6 +1,4 @@
--------------------------------------------------------------------------------------------------- app.component.html
-
-
+--------------------------------------------------------------------------------------------------------------- app.component.html
 
 <form (ngSubmit)="onMyFormSubmit()"> 
 
@@ -8,16 +6,7 @@
 <input type="submit">
 
 </form>
-
-
-
-
-
-
-
-
-
----------------------------------------------------------------------------------------------------------------- ts 
+---------------------------------------------------------------------------------------------------------------- app.component.ts 
 
 
 import { Component } from '@angular/core';
@@ -43,46 +32,23 @@ this.myFormValidation();                //****  IN TS FILE FIRST CONSTRUCTOR LOA
  
   ngOnInit(): void {
   }
-
-
+  
+  
+ userName=new FormControl();
+ 
+ 
   myFormValidation()
   {
 //    this.userName.setValidators([Validators.required])
   
 this.userName.setValidators([Validators.required,Validators.minLength(3)])   //*** LIKE THIS WE CAN GIVE ARRAY OF VALIDATORS
-                                                                                  //setvalidators is the method used to set validations
+                                                                                  //setvalidators is the predefined method used to set validations
 
 }
 
-  userName=new FormControl();
+ 
 
-  onMyFormSubmit()
-  {
-   
-    console.log('valid '+this.userName.valid);
-    console.log('touched '+this.userName.touched);
   
-    console.log(this.userName)   //***only user name means it has many properties in it it will show all value,dirty,errors ,prie
-
-    if(this.userName.errors!=null)
-    {
-        if(this.userName.errors.required)
-        {
-          alert('name cannot be left blank')
-        }
-
-        
-        if(this.userName.errors.minlength)
-        {
-         
-         console.log(this.userName.errors.minlength.actualLength);
-         console.log(this.userName.errors.minlength.requiredLength);
-          alert('user name should be of 3 or more chars')
-        }
-       //if(this.userName.errors[required])
-        
-    }
-
   }
 
 
